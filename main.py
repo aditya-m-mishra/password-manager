@@ -8,16 +8,20 @@ def save():
     email = email_entry.get()
     passsword = password_entry.get()
 
-    is_ok = messagebox.askokcancel(
-        title=website,
-        message=f"Details entered: \nEmail: {email} \nPassword: {passsword} \nContinue to save?",
-    )
+    if len(website) == 0 or len(passsword) == 0 or len(email) == 0:
+        messagebox.showinfo(title="oops", message="fields cannot be left empty")
 
-    if is_ok:
-        with open("data.txt", "a") as data_file:
-            data_file.write(f"{website} | {email} | {passsword}\n")
-            website_entry.delete(0, END)
-            password_entry.delete(0, END)
+    else:
+        is_ok = messagebox.askokcancel(
+            title=website,
+            message=f"Details entered: \nEmail: {email} \nPassword: {passsword} \nContinue to save?",
+        )
+
+        if is_ok:
+            with open("data.txt", "a") as data_file:
+                data_file.write(f"{website} | {email} | {passsword}\n")
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 
 window = Tk()  # window setup
