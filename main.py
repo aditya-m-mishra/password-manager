@@ -136,6 +136,10 @@ def find_password():
             messagebox.showinfo(
                 title=website, message=f"Email: {email}\nPassword: {password}"
             )
+        else:
+            messagebox.showinfo(
+                title="error", message=f"No details for {website}exists in database."
+            )
 
 
 window = Tk()  # window setup
